@@ -79,7 +79,7 @@ WSGI_APPLICATION = 'anchor1.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'anchor1',
+        'NAME': 'anchor2',
         'USER': 'anchor2dbadmin',
         'PASSWORD': 'password',
         'HOST': '127.0.0.1',
