@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block title %} | Category {% endblock title %}
+{% block content %}
+<div class="container-fluid">
+    <div class="row">
+        {% if category %}
+        {% for Category in category %}
+        <div class="col-12 col-sm-6 col-lg-3  w-25 ">
+            <div class="card">
+                <a href="{% url 'category' Category.id %}">
+                    <img src="{{Category.image.url}}" class="card-img-top">
+                </a>
+                <div class="card-body">
+                  <h5 class="card-title">Categories: {{Category.category}}</h5>
+                  <p class="card-text">Products : {{Category.title}} </p>
+                  <p class="card-text">Price : {{Category.price}} </p>
+                </div>
+              </div>
+        </div>
+        {% endfor %}
+        {% endif %}
+    </div>
+</div>
+{% endblock content %}

@@ -1,0 +1,56 @@
+{% extends 'base.html'%}
+{% load mathfilters %}
+{% block title %} | Cart {% endblock title %}
+{% block content %}
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12 col-sm-6 col-lg-2"></div>
+            <div class="col-12 col-sm-6 col-lg-8">
+                <table class="table">
+                    <thead>
+                      <tr>
+                        <th scope="col">Product</th>
+                        <th scope="col">Image</th>
+                        <th scope="col">Price</th>
+                        <th scope="col">Quantity</th>
+                        <th scope="col">Amount</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                        {% if basket%}
+                        {% for item in basket %}
+                            <tr>
+                                <th>{{item.product.title}}</th>
+                                <td><img src="{{item.product.image.url}}" alt="" width="50px"></td>
+                                <td>${{item.product.price}}</td>
+                                <td><input type="number" style="width: 40px;" value="{{item.quantity}}" min="{{item.product.min_quant}}" max="{{item.product.max_quant}}"></td>
+                                <td>{{item.product.price|mul:item.quantity}}</td>
+                            </tr>
+                        {% endfor %}
+                        {% endif %}
+                    </tbody>
+                    <tbody>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td>{{total}}</td>
+                        </tr>
+                    </tbody>
+                    <tbody>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td><a href="{% url 'checkout' %}">Proceed to checkout</a></td>
+                        </tr>
+                    </tbody>
+                  </table>
+            </div>
+            <div class="col-12 col-sm-6 col-lg-2"></div>
+        </div>
+    </div>
+{% endblock content %}
